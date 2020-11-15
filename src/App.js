@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import githubJobs from "./api/githubJobs";
 
-function App() {
+const App = () => {
+  const [jobs, setJobs] = useState([]);
+  const getJobs = async (language, location) => {
+    const response = await githubJobs.get("/positions.json", {
+      method: "GET",
+      params: {
+        description: language,
+        location,
+      },
+    });
+
+    console.log(response.data);
+    setJobs(response.data);
+  };
+
+  const JobsList = () => {
+    const list = jobs.map((job) => {
+      const { company, company_logo, company_url, title } = job;
+      return (
+        <div>
+          <img src={company_logo} alt={company} />
+          <h2>{title}</h2>
+          <p>{company}</p>
+          <a href={company_url}>Click here</a>
+        </div>
+      );
+    });
+    return <div>{list}</div>;
+  };
+
+  useEffect(() => {
+    getJobs("javascript", "toronto");
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      Github Jobs
+      <JobsList />
     </div>
   );
-}
-
+};
 export default App;
