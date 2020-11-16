@@ -46,7 +46,6 @@ const App = () => {
 
   return (
     <div>
-      Github Jobs
       <Form jobs={getJobs} />
       {errorMessage ? <h2>{errorMessage}</h2> : <JobsList />}
     </div>
