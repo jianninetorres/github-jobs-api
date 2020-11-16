@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 const Form = ({ jobs }) => {
-  const [description, setDescription] = useState("Javascript");
-  const [location, setLocation] = useState("New York");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
 
   const onHandleDescriptionChange = (event) => {
     setDescription(event.target.value);
@@ -20,13 +20,14 @@ const Form = ({ jobs }) => {
   return (
     <form action="" method="get" onSubmit={onHandleSubmit}>
       <label htmlFor="description">
-        Filter by title, companies, expertise...{" "}
+        Filter by title, companies, expertise...
       </label>
       <input
         type="text"
         name="description"
         onChange={onHandleDescriptionChange}
         value={description}
+        placeholder="Filter by title, companies, expertise..."
       />
       <label htmlFor="location">Filter by location... </label>
       <input
@@ -34,6 +35,7 @@ const Form = ({ jobs }) => {
         name="location"
         onChange={onHandleLocationChange}
         value={location}
+        placeholder="Filter by location..."
       />
       <label htmlFor="type">Full Time Only</label>
       <input type="checkbox" name="type" />
