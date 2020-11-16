@@ -5,7 +5,7 @@ import Form from "./components/Form";
 const App = () => {
   const [jobs, setJobs] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const getJobs = async (description, location) => {
+  const getJobs = async (description = "", location = "") => {
     const response = await githubJobs.get("/positions.json", {
       method: "GET",
       params: {
@@ -15,9 +15,13 @@ const App = () => {
     });
 
     const data = response.data;
-    data.length > 0 ? setJobs(response.data) : setErrorMessage("No jobs found");
-    console.log(response.data);
-    console.log("error message:", errorMessage);
+    console.log(data.length);
+    if (data.length > 0) {
+      setJobs(response.data);
+      setErrorMessage("");
+    } else {
+      setErrorMessage("No jobs found");
+    }
   };
 
   const JobsList = () => {
@@ -37,7 +41,8 @@ const App = () => {
 
   useEffect(() => {
     getJobs();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
