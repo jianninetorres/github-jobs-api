@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import githubJobs from "./api/githubJobs";
 import GlobalStyles from "../src/styles/GlobalStyles";
 import Form from "./components/Form";
+import JobsList from "./components/JobsList";
 
 const App = () => {
   const [jobs, setJobs] = useState([]);
@@ -25,21 +26,6 @@ const App = () => {
     }
   };
 
-  const JobsList = () => {
-    const list = jobs.map((job) => {
-      const { company, company_logo, company_url, title } = job;
-      return (
-        <div>
-          <img src={company_logo} alt={company} />
-          <h2>{title}</h2>
-          <p>{company}</p>
-          <a href={company_url}>Click here</a>
-        </div>
-      );
-    });
-    return <div>{list}</div>;
-  };
-
   useEffect(() => {
     getJobs();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,6 +37,7 @@ const App = () => {
       {errorMessage ? <h2>{errorMessage}</h2> : <JobsList />}
     </div>
       <GlobalStyles />
+        {errorMessage ? <h2>{errorMessage}</h2> : <JobsList jobs={jobs} />}
   );
 };
 export default App;
