@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import githubJobs from "./api/githubJobs";
 import GlobalStyles from "../src/styles/GlobalStyles";
+import Header from "../src/components/Header";
 import Form from "./components/Form";
 import JobsList from "./components/JobsList";
 
@@ -32,12 +33,13 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <Form jobs={getJobs} />
-      {errorMessage ? <h2>{errorMessage}</h2> : <JobsList />}
-    </div>
+    <>
       <GlobalStyles />
+      <Header title="devjobs">
+        <Form jobs={getJobs} />
+      </Header>
         {errorMessage ? <h2>{errorMessage}</h2> : <JobsList jobs={jobs} />}
+    </>
   );
 };
 export default App;
