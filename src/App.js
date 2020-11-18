@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import githubJobs from "./api/githubJobs";
+import GlobalStyles from "../src/styles/GlobalStyles";
 import Form from "./components/Form";
 
 const App = () => {
@@ -49,6 +50,7 @@ const App = () => {
       <Form jobs={getJobs} />
       {errorMessage ? <h2>{errorMessage}</h2> : <JobsList />}
     </div>
+      <GlobalStyles />
   );
 };
 export default App;
