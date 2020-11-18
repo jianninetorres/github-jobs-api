@@ -2,10 +2,28 @@ import React from "react";
 import styled from "styled-components";
 
 const JobsListStyles = styled.section`
+  display: grid;
+  grid-gap: calc(var(--base-size) * 3);
+  @media screen and (min-width: 500px) {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
   div {
     background-color: var(--white);
     border-radius: 8px;
-    overflow: hidden;
+    padding: var(--base-size);
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  img {
+    width: 100%;
+    max-width: 70px;
+    border-radius: 6px;
+    padding-bottom: var(--base-size);
   }
 `;
 

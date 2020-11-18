@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Inter", sans-serif;
+  src: url("../fonts/Inter-Regular-slnt=0.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter", sans-serif;
+  src: url("../fonts/Inter-SemiBold-slnt=0.ttf");
+  font-display: swap;
+}
