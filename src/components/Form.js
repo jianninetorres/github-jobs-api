@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import filterIcon from "../images/icon-filter.svg";
 
 const FormStyles = styled.form`
   display: flex;
@@ -23,11 +24,23 @@ const FormStyles = styled.form`
     width: 1px;
   }
 
-  input[name="description"] {
-    border: 0;
+  fieldset {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
     flex-basis: 180px;
     flex: 1 1 auto;
+    padding: 0;
+  }
+
+  input[name="description"] {
+    border: 0;
     min-height: calc(var(--base-size) * 2);
+
+    &::before {
+      content: "";
+    }
   }
 
   input[name="location"] {
@@ -35,6 +48,10 @@ const FormStyles = styled.form`
     @media screen and (min-width: 768px) {
       display: block;
     }
+  }
+
+  input[name="type"] {
+    display: none;
   }
 `;
 
@@ -57,27 +74,34 @@ const Form = ({ jobs }) => {
 
   return (
     <FormStyles action="" method="get" onSubmit={onHandleSubmit}>
-      <label htmlFor="description">
-        Filter by title, companies, expertise...
-      </label>
-      <input
-        type="text"
-        name="description"
-        onChange={onHandleDescriptionChange}
-        value={description}
-        placeholder="Filter by title, companies, expertise..."
-      />
-      <label htmlFor="location">Filter by location... </label>
-      <input
-        type="text"
-        name="location"
-        onChange={onHandleLocationChange}
-        value={location}
-        placeholder="Filter by location..."
-      />
-      <label htmlFor="type">Full Time Only</label>
-      <input type="checkbox" name="type" />
-      <button type="submit">Search</button>
+      <fieldset>
+        <label htmlFor="description">
+          Filter by title, companies, expertise...
+        </label>
+        <input
+          type="text"
+          name="description"
+          onChange={onHandleDescriptionChange}
+          value={description}
+          placeholder="Filter by title, companies, expertise..."
+        />
+        <img src={filterIcon} />
+      </fieldset>
+      <fieldset>
+        <label htmlFor="location">Filter by location... </label>
+        <input
+          type="text"
+          name="location"
+          onChange={onHandleLocationChange}
+          value={location}
+          placeholder="Filter by location..."
+        />
+      </fieldset>
+      <fieldset>
+        <label htmlFor="type">Full Time Only</label>
+        <input type="checkbox" name="type" />
+        <button type="submit">Search</button>
+      </fieldset>
     </FormStyles>
   );
 };
