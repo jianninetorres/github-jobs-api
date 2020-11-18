@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import githubJobs from "./api/githubJobs";
 import GlobalStyles from "../src/styles/GlobalStyles";
+import Layout from "../src/components/Layout";
 import Header from "../src/components/Header";
 import Form from "./components/Form";
 import JobsList from "./components/JobsList";
@@ -38,7 +39,9 @@ const App = () => {
       <Header title="devjobs">
         <Form jobs={getJobs} />
       </Header>
+      <Layout>
         {errorMessage ? <h2>{errorMessage}</h2> : <JobsList jobs={jobs} />}
+      </Layout>
     </>
   );
 };
