@@ -10,6 +10,8 @@ const App = () => {
   const [jobs, setJobs] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const getJobs = async (description = "", location = "") => {
     const response = await githubJobs.get("/positions.json", {
       method: "GET",
@@ -38,6 +40,7 @@ const App = () => {
   const getCard = (card) => {
     console.log(card);
     setSelectedCard(card);
+    setIsModalOpen(true);
   };
 
   return (
