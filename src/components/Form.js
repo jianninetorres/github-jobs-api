@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import filterIcon from "../images/icon-filter.svg";
+import searchIcon from "../images/icon-search.svg";
 
 const FormStyles = styled.form`
   display: flex;
@@ -32,10 +33,18 @@ const FormStyles = styled.form`
     flex-basis: 180px;
     flex: 1 1 auto;
     padding: 0;
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      flex: 0;
+    }
+  }
+
+  input {
+    border: 0;
   }
 
   input[name="description"] {
-    border: 0;
     min-height: calc(var(--base-size) * 2);
 
     &::before {
@@ -52,6 +61,13 @@ const FormStyles = styled.form`
 
   input[name="type"] {
     display: none;
+  }
+
+  button {
+    background-color: var(--purple);
+    border: none;
+    border-radius: 6px;
+    padding: calc(var(--base-size) / 2);
   }
 `;
 
@@ -100,7 +116,9 @@ const Form = ({ jobs }) => {
       <fieldset>
         <label htmlFor="type">Full Time Only</label>
         <input type="checkbox" name="type" />
-        <button type="submit">Search</button>
+        <button type="submit">
+          <img src={searchIcon} />
+        </button>
       </fieldset>
     </FormStyles>
   );
