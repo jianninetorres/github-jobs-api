@@ -17,7 +17,8 @@ const JobsListStyles = styled.section`
     min-height: 200px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    cursor: pointer;
   }
 
   img {
@@ -44,9 +45,17 @@ const JobsListStyles = styled.section`
       }
     }
   }
+
+  h3 {
+    margin-bottom: 0;
+  }
 `;
 
 const JobsList = ({ jobs }) => {
+  const onClickCard = (id) => {
+    console.log(id);
+  };
+
   const list = jobs.map((job) => {
     const {
       company,
@@ -59,8 +68,21 @@ const JobsList = ({ jobs }) => {
       created_at,
     } = job;
     const timestamp = moment(created_at).fromNow();
+
     return (
-      <div key={id}>
+      <div
+        key={id}
+        onClick={onClickCard(
+          company,
+          company_logo,
+          company_url,
+          id,
+          title,
+          type,
+          location,
+          created_at
+        )}
+      >
         <img src={company_logo} alt={company} />
         <span className="timestamp">
           <p>{timestamp}</p>
@@ -72,7 +94,6 @@ const JobsList = ({ jobs }) => {
           <p>{company}</p>
           <h3>{location}</h3>
         </span>
-        <a href={company_url}>Click here</a>
       </div>
     );
   });

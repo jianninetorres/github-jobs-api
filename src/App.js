@@ -20,6 +20,7 @@ const App = () => {
 
     const data = response.data;
     console.log(data.length);
+    console.log(data);
     if (data.length > 0) {
       setJobs(response.data);
       setErrorMessage("");

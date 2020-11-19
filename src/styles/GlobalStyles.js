@@ -27,7 +27,7 @@ const GlobalStyles = createGlobalStyle`
     
     h3 {
         color: var(--purple);
-        font-size: 1.35rem;
+        font-size: 1rem;
     }
     
     p {
