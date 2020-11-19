@@ -25,16 +25,35 @@ const JobsListStyles = styled.section`
     border-radius: 6px;
     padding-bottom: var(--base-size);
   }
+
+  span {
+    margin-bottom: var(--base-size);
+  }
 `;
 
 const JobsList = ({ jobs }) => {
   const list = jobs.map((job) => {
-    const { company, company_logo, company_url, id, title } = job;
+    const {
+      company,
+      company_logo,
+      company_url,
+      id,
+      title,
+      type,
+      location,
+      created_at,
+    } = job;
     return (
       <div key={id}>
         <img src={company_logo} alt={company} />
-        <h2>{title}</h2>
-        <p>{company}</p>
+        <span>
+          <p>{type}</p>
+        </span>
+        <span>
+          <h2>{title}</h2>
+          <p>{company}</p>
+          <h3>{location}</h3>
+        </span>
         <a href={company_url}>Click here</a>
       </div>
     );

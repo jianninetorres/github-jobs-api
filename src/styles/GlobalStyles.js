@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
         --background-color-grey: #f0f0f0;
         --white: #ffffff;
         --grey: #707C91;
+        --purple: #5262EB;
     }
 
     body {
@@ -13,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
     }
     
-    h2, p {
+    h2, h3, p {
         font-family: 'Inter', sans-serif;
         margin-top: 0;
         margin-bottom: var(--base-size);
@@ -21,11 +22,18 @@ const GlobalStyles = createGlobalStyle`
     
     h2 {
         font-weight: 600;
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        color: var(--purple);
+        font-size: 1.35rem;
     }
     
     p {
-        font-weight: 400;
         color: var(--grey);
+        font-weight: 400;
+        font-size: 1.2rem;
     }
 `;
 
