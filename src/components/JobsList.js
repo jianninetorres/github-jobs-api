@@ -51,11 +51,7 @@ const JobsListStyles = styled.section`
   }
 `;
 
-const JobsList = ({ jobs }) => {
-  const onClickCard = (id) => {
-    console.log(id);
-  };
-
+const JobsList = ({ jobs, onClickCard }) => {
   const list = jobs.map((job) => {
     const {
       company,
@@ -72,16 +68,18 @@ const JobsList = ({ jobs }) => {
     return (
       <div
         key={id}
-        onClick={onClickCard(
-          company,
-          company_logo,
-          company_url,
-          id,
-          title,
-          type,
-          location,
-          created_at
-        )}
+        onClick={() =>
+          onClickCard({
+            company,
+            company_logo,
+            company_url,
+            id,
+            title,
+            type,
+            location,
+            created_at,
+          })
+        }
       >
         <img src={company_logo} alt={company} />
         <span className="timestamp">

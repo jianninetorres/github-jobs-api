@@ -9,6 +9,7 @@ import JobsList from "./components/JobsList";
 const App = () => {
   const [jobs, setJobs] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedCard, setSelectedCard] = useState({});
   const getJobs = async (description = "", location = "") => {
     const response = await githubJobs.get("/positions.json", {
       method: "GET",
@@ -34,6 +35,11 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const getCard = (card) => {
+    console.log(card);
+    setSelectedCard(card);
+  };
+
   return (
     <>
       <GlobalStyles />
@@ -41,7 +47,11 @@ const App = () => {
         <Form jobs={getJobs} />
       </Header>
       <Layout>
-        {errorMessage ? <h2>{errorMessage}</h2> : <JobsList jobs={jobs} />}
+        {errorMessage ? (
+          <h2>{errorMessage}</h2>
+        ) : (
+          <JobsList jobs={jobs} onClickCard={getCard} />
+        )}
       </Layout>
     </>
   );
