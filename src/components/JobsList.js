@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
+import moment from "moment";
 
 const JobsListStyles = styled.section`
   display: grid;
   grid-gap: calc(var(--base-size) * 3);
   @media screen and (min-width: 500px) {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 
   div {
@@ -29,6 +30,20 @@ const JobsListStyles = styled.section`
   span {
     margin-bottom: var(--base-size);
   }
+
+  .timestamp {
+    display: flex;
+    margin-bottom: 0;
+    p {
+      display: inline-block;
+      &:first-child {
+        margin-right: var(--base-size);
+      }
+      &:last-child {
+        margin-left: var(--base-size);
+      }
+    }
+  }
 `;
 
 const JobsList = ({ jobs }) => {
@@ -43,10 +58,13 @@ const JobsList = ({ jobs }) => {
       location,
       created_at,
     } = job;
+    const timestamp = moment(created_at).fromNow();
     return (
       <div key={id}>
         <img src={company_logo} alt={company} />
-        <span>
+        <span className="timestamp">
+          <p>{timestamp}</p>
+          <span>&#8226;</span>
           <p>{type}</p>
         </span>
         <span>
