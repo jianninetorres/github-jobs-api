@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import filterIcon from "../images/icon-filter.svg";
 import searchIcon from "../images/icon-search.svg";
+import locationIcon from "../images/icon-location.svg";
 
 const FormStyles = styled.form`
   display: flex;
@@ -9,10 +10,10 @@ const FormStyles = styled.form`
   align-items: center;
   border-radius: 6px;
   width: 100%;
+  max-width: 1100px;
   min-height: 60px;
   background-color: var(--white);
-  padding: 0 var(--base-size);
-
+  
   label:not([for="checkbox"]) {
     //hide label visually but keep them available to screen reader and other assistive technology
     border: 0;
@@ -31,17 +32,39 @@ const FormStyles = styled.form`
     justify-content: space-between;
     border: none;
     flex-basis: 180px;
-    flex: 1 1 auto;
-    padding: 0;
 
+    &:nth-child(1) {
+      flex: 1 1 auto;
+    }
+    
+    &:nth-child(2) {
+      @media screen and (max-width: 767px) {
+        display: none;
+      }
+    }
+    
     &:nth-child(2),
     &:nth-child(3) {
       flex: 0;
+      @media screen and (min-width: 768px) {
+        flex: 1 1 auto;
+      }
+    }
+
+    &:nth-child(1),
+    &:nth-child(2) {
+    @media screen and (min-width: 768px) {
+      border-right: 1px solid grey;
+      padding-right: 8px;
     }
   }
 
   input {
     border: 0;
+  }
+  
+  input:not([name="type"]) {
+    width: 100%;
   }
 
   input[name="description"] {
@@ -52,15 +75,20 @@ const FormStyles = styled.form`
     }
   }
 
-  input[name="location"] {
+  input[name="location"],
+  input[name="type"],
+  p {
     display: none;
     @media screen and (min-width: 768px) {
       display: block;
     }
   }
 
-  input[name="type"] {
-    display: none;
+  
+  img {
+    @media screen and (min-width: 768px) {
+      order: -1;
+    }
   }
 
   button {
@@ -68,6 +96,12 @@ const FormStyles = styled.form`
     border: none;
     border-radius: 6px;
     padding: calc(var(--base-size) / 2);
+  }
+  
+  p {
+    margin-bottom: 0;
+    font-weight: 600;
+    width: 75%;
   }
 `;
 
@@ -112,10 +146,12 @@ const Form = ({ jobs }) => {
           value={location}
           placeholder="Filter by location..."
         />
+        <img src={locationIcon} alt="location icon" />
       </fieldset>
       <fieldset>
         <label htmlFor="type">Full Time Only</label>
         <input type="checkbox" name="type" />
+        <p>Full time only</p>
         <button type="submit">
           <img src={searchIcon} alt="search button" />
         </button>
