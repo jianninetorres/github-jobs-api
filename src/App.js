@@ -12,6 +12,7 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [selectedCard, setSelectedCard] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [fullTimeOnly, setFullTimeOnly] = useState(false);
 
   const getJobs = async (description = "", location = "") => {
     const response = await githubJobs.get("/positions.json", {
@@ -23,7 +24,6 @@ const App = () => {
     });
 
     const data = response.data;
-    console.log(data.length);
     console.log(data);
     if (data.length > 0) {
       setJobs(response.data);
@@ -48,11 +48,17 @@ const App = () => {
     return isModalOpen === true ? setIsModalOpen(false) : setIsModalOpen(true);
   };
 
+  const getType = () => {
+    return fullTimeOnly === false
+      ? setFullTimeOnly(true)
+      : setFullTimeOnly(false);
+  };
+
   return (
     <>
       <GlobalStyles />
       <Header title="devjobs">
-        <Form jobs={getJobs} />
+        <Form jobs={getJobs} isFullTimeOnly={getType} />
       </Header>
       <Layout>
         {isModalOpen ? (
@@ -63,7 +69,11 @@ const App = () => {
         {errorMessage ? (
           <h2>{errorMessage}</h2>
         ) : (
-          <JobsList jobs={jobs} onClickCard={getCard} />
+          <JobsList
+            jobs={jobs}
+            onClickCard={getCard}
+            getFullTimeOnly={fullTimeOnly}
+          />
         )}
       </Layout>
     </>

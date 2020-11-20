@@ -105,7 +105,7 @@ const FormStyles = styled.form`
   }
 `;
 
-const Form = ({ jobs }) => {
+const Form = ({ jobs, isFullTimeOnly }) => {
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
 
@@ -150,7 +150,7 @@ const Form = ({ jobs }) => {
       </fieldset>
       <fieldset>
         <label htmlFor="type">Full Time Only</label>
-        <input type="checkbox" name="type" />
+        <input type="checkbox" name="type" onChange={isFullTimeOnly} />
         <p>Full time only</p>
         <button type="submit">
           <img src={searchIcon} alt="search button" />

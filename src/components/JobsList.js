@@ -51,8 +51,11 @@ const JobsListStyles = styled.section`
   }
 `;
 
-const JobsList = ({ jobs, onClickCard, isModalOpen }) => {
-  const list = jobs.map((job) => {
+const JobsList = ({ jobs, onClickCard, fullTimeOnly }) => {
+  const isFilteredList = fullTimeOnly
+    ? jobs.filter((job) => job.type === "Full Time")
+    : jobs;
+  const list = isFilteredList.map((job) => {
     const {
       company,
       company_logo,
