@@ -88,9 +88,11 @@ const Modal = ({ selectedCard, onClick }) => {
     type,
     location,
     created_at,
+    how_to_apply,
   } = selectedCard;
 
   const timestamp = moment(created_at).fromNow();
+  console.log(selectedCard);
 
   return (
     <ModalStyles>
@@ -106,6 +108,7 @@ const Modal = ({ selectedCard, onClick }) => {
         <h3>{location}</h3>
         <a href={company_url}>Apply now</a>
         <div dangerouslySetInnerHTML={{ __html: description }} />
+        <div dangerouslySetInnerHTML={{ __html: how_to_apply }} />
       </div>
     </ModalStyles>
   );

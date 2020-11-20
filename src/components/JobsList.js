@@ -66,6 +66,7 @@ const JobsList = ({ jobs, onClickCard, fullTimeOnly }) => {
       type,
       location,
       created_at,
+      how_to_apply,
     } = job;
     const timestamp = moment(created_at).fromNow();
 
@@ -83,6 +84,7 @@ const JobsList = ({ jobs, onClickCard, fullTimeOnly }) => {
             type,
             location,
             created_at,
+            how_to_apply,
           })
         }
       >
