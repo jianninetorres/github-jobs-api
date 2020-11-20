@@ -61,6 +61,10 @@ const ModalStyles = styled.div`
     }
   }
 
+  a {
+    word-break: break-word;
+  }
+
   a#company-site:not(#logo) {
     display: block;
     background-color: var(--purple);
