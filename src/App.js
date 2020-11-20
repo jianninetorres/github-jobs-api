@@ -5,11 +5,12 @@ import Layout from "../src/components/Layout";
 import Header from "../src/components/Header";
 import Form from "./components/Form";
 import JobsList from "./components/JobsList";
+import Modal from "./components/Modal";
 
 const App = () => {
   const [jobs, setJobs] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
+  const [selectedCard, setSelectedCard] = useState();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const getJobs = async (description = "", location = "") => {
@@ -43,6 +44,10 @@ const App = () => {
     setIsModalOpen(true);
   };
 
+  const toggleModal = () => {
+    return isModalOpen === true ? setIsModalOpen(false) : setIsModalOpen(true);
+  };
+
   return (
     <>
       <GlobalStyles />
@@ -50,6 +55,11 @@ const App = () => {
         <Form jobs={getJobs} />
       </Header>
       <Layout>
+        {isModalOpen ? (
+          <Modal selectedCard={selectedCard} onClick={toggleModal} />
+        ) : (
+          ""
+        )}
         {errorMessage ? (
           <h2>{errorMessage}</h2>
         ) : (

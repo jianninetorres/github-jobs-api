@@ -101,7 +101,7 @@ const Form = ({ jobs }) => {
           value={description}
           placeholder="Filter by title, companies, expertise..."
         />
-        <img src={filterIcon} />
+        <img src={filterIcon} alt="filter icon" />
       </fieldset>
       <fieldset>
         <label htmlFor="location">Filter by location... </label>
@@ -117,7 +117,7 @@ const Form = ({ jobs }) => {
         <label htmlFor="type">Full Time Only</label>
         <input type="checkbox" name="type" />
         <button type="submit">
-          <img src={searchIcon} />
+          <img src={searchIcon} alt="search button" />
         </button>
       </fieldset>
     </FormStyles>

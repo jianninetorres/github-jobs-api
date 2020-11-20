@@ -51,12 +51,13 @@ const JobsListStyles = styled.section`
   }
 `;
 
-const JobsList = ({ jobs, onClickCard }) => {
+const JobsList = ({ jobs, onClickCard, isModalOpen }) => {
   const list = jobs.map((job) => {
     const {
       company,
       company_logo,
       company_url,
+      description,
       id,
       title,
       type,
@@ -73,6 +74,7 @@ const JobsList = ({ jobs, onClickCard }) => {
             company,
             company_logo,
             company_url,
+            description,
             id,
             title,
             type,
@@ -95,7 +97,11 @@ const JobsList = ({ jobs, onClickCard }) => {
       </div>
     );
   });
-  return <JobsListStyles>{list}</JobsListStyles>;
+  return (
+    <>
+      <JobsListStyles>{list}</JobsListStyles>
+    </>
+  );
 };
 
 export default JobsList;

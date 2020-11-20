@@ -7,15 +7,16 @@ const GlobalStyles = createGlobalStyle`
         --white: #ffffff;
         --grey: #707C91;
         --purple: #5262EB;
+        --black: #000000;
     }
 
     body {
         background-color: var(--background-color-grey);
+        font-family: 'Inter', sans-serif;
         margin: 0;
     }
     
     h2, h3, p {
-        font-family: 'Inter', sans-serif;
         margin-top: 0;
         margin-bottom: var(--base-size);
     }
