@@ -50,18 +50,14 @@ const ModalStyles = styled.div`
     }
   }
 
-  span {
+  .container {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
     margin-bottom: 0;
     p {
-      display: inline-block;
       font-size: 1rem;
-      &:first-child {
-        margin-right: var(--base-size);
-      }
-      &:last-child {
-        margin-left: var(--base-size);
-      }
     }
   }
 
@@ -100,11 +96,13 @@ const Modal = ({ selectedCard, onClick }) => {
           <img src={company_logo} alt={company} />
         </a>
         <img src={closeIcon} alt="close" onClick={onClick} />
-        <span>
+        <div className="container">
+          <p>{company}</p>
+          <span>&#8226;</span>
           <p>{timestamp}</p>
           <span>&#8226;</span>
           <p>{type}</p>
-        </span>
+        </div>
         <h2>{title}</h2>
         <h3>{location}</h3>
         <a href={company_url} id="company-site">
