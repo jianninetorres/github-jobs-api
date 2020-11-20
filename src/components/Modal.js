@@ -65,7 +65,7 @@ const ModalStyles = styled.div`
     }
   }
 
-  a {
+  a#company-site:not(#logo) {
     display: block;
     background-color: var(--purple);
     color: white;
@@ -92,13 +92,14 @@ const Modal = ({ selectedCard, onClick }) => {
   } = selectedCard;
 
   const timestamp = moment(created_at).fromNow();
-  console.log(selectedCard);
 
   return (
     <ModalStyles>
       <div id={id} className="job-post">
+        <a href={company_url} id="logo">
+          <img src={company_logo} alt={company} />
+        </a>
         <img src={closeIcon} alt="close" onClick={onClick} />
-        <img src={company_logo} alt={company} />
         <span>
           <p>{timestamp}</p>
           <span>&#8226;</span>
@@ -106,7 +107,9 @@ const Modal = ({ selectedCard, onClick }) => {
         </span>
         <h2>{title}</h2>
         <h3>{location}</h3>
-        <a href={company_url}>Apply now</a>
+        <a href={company_url} id="company-site">
+          Company site
+        </a>
         <div dangerouslySetInnerHTML={{ __html: description }} />
         <div dangerouslySetInnerHTML={{ __html: how_to_apply }} />
       </div>

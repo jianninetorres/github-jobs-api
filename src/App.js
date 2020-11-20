@@ -24,7 +24,6 @@ const App = () => {
     });
 
     const data = response.data;
-    console.log(data);
     if (data.length > 0) {
       setJobs(response.data);
       setErrorMessage("");
@@ -39,7 +38,6 @@ const App = () => {
   }, []);
 
   const getCard = (card) => {
-    console.log(card);
     setSelectedCard(card);
     setIsModalOpen(true);
   };
