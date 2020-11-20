@@ -6,6 +6,7 @@ import Header from "../src/components/Header";
 import Form from "./components/Form";
 import JobsList from "./components/JobsList";
 import Modal from "./components/Modal";
+import LoadingDotsStyles from "./components/LoadingDots";
 
 const App = () => {
   const [jobs, setJobs] = useState([]);
@@ -66,12 +67,14 @@ const App = () => {
         )}
         {errorMessage ? (
           <h2>{errorMessage}</h2>
-        ) : (
+        ) : jobs.length > 0 ? (
           <JobsList
             jobs={jobs}
             onClickCard={getCard}
             getFullTimeOnly={fullTimeOnly}
           />
+        ) : (
+          <LoadingDotsStyles />
         )}
       </Layout>
     </>
