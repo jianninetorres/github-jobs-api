@@ -5,7 +5,7 @@
 - View all jobs currently live on the GitHub Jobs API
 - Filter by title, companies, expertise, location, and full-time only.
 - Click a job to open modal and read more information to apply for the job.
-- Single-page Application built with React, Styled components, axios API.
+- Single-page Application built with React, Styled components, axios API, moment.js.
 
 To run locally:
 
